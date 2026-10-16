@@ -462,7 +462,7 @@ function sheet(html){ document.getElementById('sheetbody').innerHTML=html; docum
 function closeSheet(){ document.getElementById('sheet').style.display='none'; }
 function exListSheet(w){
   let h='<div class="grab"></div><h3 style="margin:4px 0 6px">'+esc(w.name)+'</h3>';
-  w.items.forEach(it=>{ const ex=exById(it.exId); h+='<div class="lrow"><div class="t"><b>'+esc(ex?ex.name:'?')+'</b><span>'+it.sets+' × '+esc(it.target||'')+'</span></div></div>'; });
+  w.items.forEach(it=>{ const ex=exById(it.exId); const tgt=esc(it.target||''); const line = (it.sets>1 ? it.sets+' × '+tgt : tgt); h+='<div class="lrow"><div class="t"><b>'+esc(ex?ex.name:'?')+'</b><span>'+line+'</span></div></div>'; });
   h+='<div class="row" style="margin-top:12px"><button class="btn big" onclick="closeSheet()">Close</button><button class="btn big primary" onclick="closeSheet(); startSession(\''+w.id+'\')">Start</button></div>';
   return h;
 }
